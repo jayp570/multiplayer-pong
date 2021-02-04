@@ -14,7 +14,7 @@ class Player {
             this.h = 25
         } else {
             this.w = 25
-            this.h = 400
+            this.h = 800
         }
 
         this.pos = {x: pos.x, y: pos.y}
