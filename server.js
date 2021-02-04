@@ -52,11 +52,18 @@ let playerParams = {
 
 
 
-
 io.sockets.on("connection", function(socket) {
 
+    socket.spectator = false
+
+    if(game.players.length >= 4) {
+        socket.spectator = true
+    }
+
     socket.playerId = Math.random()
-    game.players.push(new Player("", socket.playerId, playerParams[game.players.length].pos, playerParams[game.players.length].orientation, playerParams[game.players.length].color))
+    if(socket.spectator == false) {
+        game.players.push(new Player("", socket.playerId, playerParams[game.players.length].pos, playerParams[game.players.length].orientation, playerParams[game.players.length].color))
+    }
 
     socket.on("join", function(username) {
         for(let player of game.players) {
