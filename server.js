@@ -100,6 +100,6 @@ setInterval(function() {
     io.emit("update", game)
 }, 1000/60);
 
-http.listen(3000, function() {
+http.listen(process.env.PORT, function() {
     console.log("server running")
 })
