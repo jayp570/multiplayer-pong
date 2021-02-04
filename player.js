@@ -10,11 +10,11 @@ class Player {
 
         this.orientation = orientation
         if(this.orientation == "horizontal") {
-            this.w = 800
+            this.w = 400
             this.h = 25
         } else {
             this.w = 25
-            this.h = 800
+            this.h = 400
         }
 
         this.pos = {x: pos.x, y: pos.y}
