@@ -99,6 +99,9 @@ io.sockets.on("connection", function(socket) {
                 break
             }
         }
+        for(let i = 0; i < game.players.length; i++) {
+            game.players[i] = new Player(game.players[i].username, game.players[i].id, playerParams[i].pos, playerParams[i].orientation, playerParams[i].color)
+        }
     }) 
 }) 
 

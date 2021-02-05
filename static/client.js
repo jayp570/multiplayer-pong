@@ -1,4 +1,5 @@
 let socket = io.connect("https://multiplayer-pong123456789.herokuapp.com/")
+//http://localhost:3000
 
 let username = prompt("Enter your username")
 socket.emit("join", username.trim())
