@@ -9,7 +9,7 @@ class Ball {
 
         this.angle = -Math.PI/2
 
-        this.speed = 2
+        this.speed = 5
 
     }
 
@@ -20,9 +20,11 @@ class Ball {
     changeDirection() {
         this.angle += Math.PI+this.getRandomNum(-Math.PI/6, Math.PI/6)
         //+this.getRandomNum(-Math.PI/4, Math.PI/4)
-        this.speed += 0.3
-        this.pos.x += Math.cos(this.angle)*20
-        this.pos.y += Math.sin(this.angle)*20
+        if(this.speed < 60) {
+            this.speed += 0.3
+        }
+        // this.pos.x += Math.cos(this.angle)*20
+        // this.pos.y += Math.sin(this.angle)*20
     }
 
     update() {

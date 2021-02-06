@@ -3,13 +3,13 @@ const FRICTION = -0.1
 
 class Player {
 
-    constructor(username, id, pos, orientation, color) {
+    constructor(username, id, pos, side, color) {
 
         this.username = username
         this.id = id
 
-        this.orientation = orientation
-        if(this.orientation == "horizontal") {
+        this.side = side
+        if(this.side == "bottom" || this.side == "top") {
             this.w = 400
             this.h = 25
         } else {

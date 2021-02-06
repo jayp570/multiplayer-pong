@@ -22,7 +22,7 @@ let playerParams = {
             y: 25
         },
         color: "tomato",
-        orientation: "horizontal"
+        side: "top",
     },
     1: {
         pos: {
@@ -30,7 +30,7 @@ let playerParams = {
             y: 800-25*2
         },
         color: "dodgerblue",
-        orientation: "horizontal"
+        side: "bottom",
     },
     2: {
         pos: {
@@ -38,7 +38,7 @@ let playerParams = {
             y: 0
         },
         color: "mediumseagreen",
-        orientation: "vertical"
+        side: "left"
     },
     3: {
         pos: {
@@ -46,7 +46,7 @@ let playerParams = {
             y: 0
         },
         color: "orange",
-        orientation: "vertical"
+        side: "right"
     }
 }
 
@@ -62,7 +62,7 @@ io.sockets.on("connection", function(socket) {
 
     socket.playerId = Math.random()
     if(socket.spectator == false) {
-        game.players.push(new Player("", socket.playerId, playerParams[game.players.length].pos, playerParams[game.players.length].orientation, playerParams[game.players.length].color))
+        game.players.push(new Player("", socket.playerId, playerParams[game.players.length].pos, playerParams[game.players.length].side, playerParams[game.players.length].color))
     }
 
     socket.on("join", function(username) {
@@ -78,7 +78,7 @@ io.sockets.on("connection", function(socket) {
     socket.on("mouseMove", function(mousePos) {
         for(let player of game.players) {
             if(player.id == socket.playerId) {
-                if(player.orientation == "horizontal") {
+                if(player.side == "bottom" || player.side == "top") {
                     player.pos.x = mousePos.x-player.w/2
                 } else {
                     player.pos.y = mousePos.y-player.h/2
@@ -100,7 +100,7 @@ io.sockets.on("connection", function(socket) {
             }
         }
         for(let i = 0; i < game.players.length; i++) {
-            game.players[i] = new Player(game.players[i].username, game.players[i].id, playerParams[i].pos, playerParams[i].orientation, playerParams[i].color)
+            game.players[i] = new Player(game.players[i].username, game.players[i].id, playerParams[i].pos, playerParams[i].side, playerParams[i].color)
         }
     }) 
 }) 
