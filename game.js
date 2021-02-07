@@ -10,6 +10,15 @@ class Game {
 
     }
 
+    hasPlayer(side) {
+        for(let player of this.players) {
+            if(player.side == side) {
+                return true
+            }
+        }
+        return null
+    }
+
     update() {
 
         for(let player of this.players)  {
@@ -34,6 +43,40 @@ class Game {
                 break
             }
         }
+
+        if(this.ball.pos.x < 0) {
+            if(this.hasPlayer("left")) {
+                this.ball.reset()
+            } else {
+                this.ball.pos.x = 0
+                this.ball.changeDirection()
+            }
+        }
+        if(this.ball.pos.x > 800-this.ball.h) {
+            if(this.hasPlayer("right")) {
+                this.ball.reset()
+            } else {
+                this.ball.pos.x = 800-this.ball.w
+                this.ball.changeDirection()
+            }
+        }
+        if(this.ball.pos.y < 0) {
+            if(this.hasPlayer("top")) {
+                this.ball.reset()
+            } else {
+                this.ball.pos.y = 0
+            this.ball.changeDirection()
+            }
+        }
+        if(this.ball.pos.y > 800-this.ball.h) {
+            if(this.hasPlayer("bottom")) {
+                this.ball.reset()
+            } else {
+                this.ball.pos.y = 800-this.ball.h
+                this.ball.changeDirection()
+            }
+        }
+        
     }
 
 }

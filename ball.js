@@ -9,7 +9,7 @@ class Ball {
 
         this.angle = -Math.PI/2
 
-        this.speed = 5
+        this.speed = 7.5
 
     }
 

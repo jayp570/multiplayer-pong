@@ -110,6 +110,7 @@ setInterval(function() {
     io.emit("update", game)
 }, 1000/60);
 
+//process.env.PORT
 http.listen(process.env.PORT, function() {
     console.log("server running")
 })
